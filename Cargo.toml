@@ -1,8 +1,32 @@
 [workspace]
 resolver = "2"
 members = ["crates/kernel-contracts"]
+exclude = ["lean", "contracts"]
 
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
+rust-version = "1.75"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+missing_docs = "warn"
+unused_results = "warn"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+needless_pass_by_value = "warn"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+opt-level = 3
+
+[profile.dev]
+debug = true
+opt-level = 0

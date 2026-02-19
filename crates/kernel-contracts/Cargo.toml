@@ -3,6 +3,9 @@ name = "kernel-contracts"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+rust-version.workspace = true
+
+[features]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
@@ -10,3 +13,6 @@ serde_yaml = "0.9"
 
 [dev-dependencies]
 proptest = "1"
+
+[lints]
+workspace = true

@@ -1,0 +1,12 @@
+disallowed-methods = [
+    { path = "std::env::var", reason = "Use a configuration struct instead of reading env vars directly" },
+    { path = "std::process::exit", reason = "Return Result from main instead of calling process::exit" },
+]
+
+disallowed-types = [
+    { path = "std::collections::HashMap", reason = "Use BTreeMap for deterministic ordering, or explicitly opt-in to HashMap" },
+]
+
+cognitive-complexity-threshold = 25
+too-many-arguments-threshold = 7
+type-complexity-threshold = 250
