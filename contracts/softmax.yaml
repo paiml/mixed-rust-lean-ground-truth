@@ -1,0 +1,18 @@
+name: softmax
+equations:
+  - id: eq1
+    latex: "\\sigma(x)_i = \\frac{e^{x_i}}{\\sum_j e^{x_j}}"
+    description: "Softmax function definition"
+obligations:
+  - property: "Output sums to 1"
+    formal: "|Σ σ(x)_i - 1.0| < ε"
+    verification_level: TheoremProved
+    lean_theorem: "GroundTruth.Softmax.partition_of_unity"
+  - property: "All outputs non-negative"
+    formal: "∀i. σ(x)_i ≥ 0"
+    verification_level: PropertyTested
+    lean_theorem: "GroundTruth.Softmax.non_negativity"
+  - property: "Preserves ordering"
+    formal: "x_i > x_j → σ(x)_i > σ(x)_j"
+    verification_level: Untested
+    lean_theorem: "GroundTruth.Softmax.monotonicity"
